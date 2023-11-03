@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_offer")
@@ -20,6 +22,9 @@ public class Offer implements Serializable {
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
+
+    @OneToMany(mappedBy = "offer")
+    private List<Resource> resources = new ArrayList<>();
 
     public Offer() {
 
