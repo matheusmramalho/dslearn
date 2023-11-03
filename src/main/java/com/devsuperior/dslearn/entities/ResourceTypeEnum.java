@@ -1,6 +1,6 @@
 package com.devsuperior.dslearn.entities;
 
-public enum ResourceType {
+public enum ResourceTypeEnum {
     LESSON_ONLY,
     LESSON_TASK,
     FORUM,

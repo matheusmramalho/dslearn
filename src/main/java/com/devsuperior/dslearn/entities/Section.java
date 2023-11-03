@@ -1,14 +1,14 @@
 package com.devsuperior.dslearn.entities;
 
+
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
+// Módulo dos recursos Ex: Recurso Trilha HTML 1.0 tem a Sessão Módulo 1, Módulo 2, etc..
 @Entity
-@Table(name = "tb_resource")
-public class Resource implements Serializable {
+@Table(name = "tb_section")
+public class Section implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -19,29 +19,28 @@ public class Resource implements Serializable {
     private Integer position;
     private String imgUri;
 
-    @Enumerated(EnumType.STRING)
-    private ResourceTypeEnum type;
-
+    // Many Sections to One resource
     @ManyToOne
-    @JoinColumn(name = "offer_id")
-    private Offer offer;
+    @JoinColumn(name = "resource_id")
+    private Resource resource;
 
-    // One resource to Many sections
-    @OneToMany(mappedBy = "resource")
-    private List<Section> sections = new ArrayList<>();
+    // Many Sections prerequisite to One Section
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    private Section prerequisite;
 
-    public Resource() {
+    public Section() {
 
     }
 
-    public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceTypeEnum type, Offer offer) {
+    public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource, Section prerequisite) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.position = position;
         this.imgUri = imgUri;
-        this.type = type;
-        this.offer = offer;
+        this.resource = resource;
+        this.prerequisite = prerequisite;
     }
 
     public Long getId() {
@@ -84,19 +83,19 @@ public class Resource implements Serializable {
         this.imgUri = imgUri;
     }
 
-    public ResourceTypeEnum getType() {
-        return type;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void setType(ResourceTypeEnum type) {
-        this.type = type;
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
-    public Offer getOffer() {
-        return offer;
+    public Section getPrerequisite() {
+        return prerequisite;
     }
 
-    public void setOffer(Offer offer) {
-        this.offer = offer;
+    public void setPrerequisite(Section prerequisite) {
+        this.prerequisite = prerequisite;
     }
 }

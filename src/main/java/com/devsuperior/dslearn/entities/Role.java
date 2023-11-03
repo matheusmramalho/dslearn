@@ -6,7 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "tb_role")
+@Table(name = "2_tb_role")
 public class Role implements Serializable {
 
     @Serial

@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "1_tb_user")
 public class User implements Serializable {
 
     @Serial
