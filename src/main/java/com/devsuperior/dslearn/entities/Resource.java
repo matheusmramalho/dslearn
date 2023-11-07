@@ -1,5 +1,6 @@
 package com.devsuperior.dslearn.entities;
 
+import com.devsuperior.dslearn.enums.ResourceTypeEnum;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
